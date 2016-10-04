@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hujan',
+    #third party app
+    'rest_framework',
+    'report_builder',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -61,6 +65,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -119,3 +125,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+
+#REST FRAMEWORK
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
+#REPORT BUILDER
+REPORT_BUILDER_INCLUDE = ['hujan.Hujan']
+REPORT_BUILDER_GLOBAL_EXPORT = True
+REPORT_BUILDER_ASYNC_REPORT = True
+REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
+
+
+
+
+

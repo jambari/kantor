@@ -1,6 +1,6 @@
 *.pyc
 __pycache__
-myvenv
+si_angkasa
 db.sqlite3
 /static
 .DS_Store
