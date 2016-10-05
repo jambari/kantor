@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+#from hujan.models import Hujan
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,12 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'operasional',
+    'tatausaha',
+    #third party app
+    'report_builder',
+    'rest_framework',
+    'smuggler',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -61,6 +68,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -119,3 +128,50 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+
+
+#REST FRAMEWORK
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
+#REPORT BUILDER
+REPORT_BUILDER_INCLUDE = ['operasional.hujan','operasional.gempabumi','operasional.magnetbumi',
+    'operasional.listrikudara','operasional.k_index','operasional.laporan','operasional.laporanshift',
+    'tatausaha.pegawai','tatausaha.suratkeluar','tatausaha.suratmasuk'
+]
+
+REPORT_BUILDER_EXCLUDE = ['user','session','contenttype','permission','group','log-entry','format','report','filter-field']
+#from operasional.models import *
+#from tatausaha.models import *
+REPORT_BUILDER_GLOBAL_EXPORT = True
+REPORT_BUILDER_ASYNC_REPORT = True
+REPORT_BUILDER_FRONTEND = True
+#REPORT_BUILDER_MODEL_MANAGER = 'on_site'
+#REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
+
+#GRAPPELLI SETTING
+GRAPPELLI_ADMIN_TITLE = 'SI Stageof Angkasapura | Jl. Drs. Krisna Sunarya No. 26 Angkasapura'
+
+
+
+
+
