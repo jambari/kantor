@@ -160,6 +160,11 @@ class K_index(models.Model):
 	jam = models.CharField(max_length=5, choices=jam_index_choices)
 	value = models.SmallIntegerField(default=0.0)
 
+	def __str__(self):
+		return str(self.tanggal)
+
+	def __unicode__(self):
+		return str(self.tanggal)
 
 
 

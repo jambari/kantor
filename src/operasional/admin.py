@@ -103,7 +103,11 @@ class MagnetbumiAdmin(admin.ModelAdmin):
 
 admin.site.register(Magnetbumi, MagnetbumiAdmin)
 
-admin.site.register(K_index)
+
+class kindexAdmin(admin.ModelAdmin):
+	list_display = ['tanggal','jam','value']
+	list_filter = ['tanggal','jam','value']
+admin.site.register(K_index, kindexAdmin)
 
 
 class LaporanAdmin(admin.ModelAdmin):

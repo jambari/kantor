@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'operasional',
     'tatausaha',
     #third party app
-    'rest_framework',
     'report_builder',
+    'rest_framework',
+    'smuggler',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -153,15 +154,22 @@ REST_FRAMEWORK = {
 }
 
 #REPORT BUILDER
-REPORT_BUILDER_INCLUDE = ['hujan.user','hujan.Hujan','tatausaha.Divisi',
-'tatausaha.Jabatan','tatausaha.Pegawai'
+REPORT_BUILDER_INCLUDE = ['operasional.hujan','operasional.gempabumi','operasional.magnetbumi',
+    'operasional.listrikudara','operasional.k_index','operasional.laporan','operasional.laporanshift',
+    'tatausaha.pegawai','tatausaha.suratkeluar','tatausaha.suratmasuk'
 ]
+
+REPORT_BUILDER_EXCLUDE = ['user','session','contenttype','permission','group','log-entry','format','report','filter-field']
+#from operasional.models import *
+#from tatausaha.models import *
 REPORT_BUILDER_GLOBAL_EXPORT = True
 REPORT_BUILDER_ASYNC_REPORT = True
+REPORT_BUILDER_FRONTEND = True
+#REPORT_BUILDER_MODEL_MANAGER = 'on_site'
 #REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
 
 #GRAPPELLI SETTING
-GRAPPELLI_ADMIN_TITLE = 'SI Stageof Angkasapura'
+GRAPPELLI_ADMIN_TITLE = 'SI Stageof Angkasapura | Jl. Drs. Krisna Sunarya No. 26 Angkasapura'
 
 
 
