@@ -7,9 +7,6 @@ from tatausaha.models import *
 from django.db.models.signals import pre_save
 # Create your models here.
 
-def get_rata(instance):
-	rata2 = Magnetbumi.objects.filter(tanggal=instance.tanggal).aggregate(Avg('value'))
-	return "%" %(rata2)
 
 
 class Hujan(models.Model):
@@ -62,6 +59,7 @@ class Gempabumi(models.Model):
     pga_ns = models.FloatField(default = 0)
     pga_ew = models.FloatField(default = 0)
     shakemap = models.BooleanField(default=False)
+    dirasakan = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['origin_time']
@@ -137,7 +135,7 @@ class Magnetbumi(models.Model):
     komponen = models.CharField(blank=True, max_length=2, choices = KOMPONEN_CHOICES)
     value = models.FloatField()
     
-    rata_rata = models.FloatField(default=get_rata)
+    rata_rata = models.FloatField()
 
 
     def __str__(self):
@@ -149,6 +147,20 @@ class Magnetbumi(models.Model):
     class Meta:
         ordering = ['tanggal']
         verbose_name_plural = 'Magnetbumi'
+
+class K_index(models.Model):
+	"""model K index"""
+	jam_index_choices = (
+		('00-03','00-03'),('03-06','03-06'),
+		('06-09','06-09'),('09-12','09-12'),
+		('12-15','12-15'),('15-18','15-18'),
+		('18-21','18-21'),('21-24','21-24')
+		)
+	tanggal = models.DateField(auto_now=False, auto_now_add=False)
+	jam = models.CharField(max_length=3, choices=jam_index_choices)
+	value = models.SmallIntegerField(default=0.0)
+
+
 
 
 class Laporan(models.Model):
