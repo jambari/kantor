@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+#from hujan.models import Hujan
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -152,10 +152,13 @@ REST_FRAMEWORK = {
 }
 
 #REPORT BUILDER
-REPORT_BUILDER_INCLUDE = ['hujan.Hujan']
+REPORT_BUILDER_INCLUDE = ['hujan.user','hujan.Hujan']
 REPORT_BUILDER_GLOBAL_EXPORT = True
 REPORT_BUILDER_ASYNC_REPORT = True
-REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
+#REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
+
+#GRAPPELLI SETTING
+GRAPPELLI_ADMIN_TITLE = 'SI Stageof Angkasapura'
 
 
 
