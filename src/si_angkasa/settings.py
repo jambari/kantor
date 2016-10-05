@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hujan',
+    'operasional',
+    'tatausaha',
     #third party app
     'rest_framework',
     'report_builder',
@@ -152,7 +153,9 @@ REST_FRAMEWORK = {
 }
 
 #REPORT BUILDER
-REPORT_BUILDER_INCLUDE = ['hujan.user','hujan.Hujan']
+REPORT_BUILDER_INCLUDE = ['hujan.user','hujan.Hujan','tatausaha.Divisi',
+'tatausaha.Jabatan','tatausaha.Pegawai'
+]
 REPORT_BUILDER_GLOBAL_EXPORT = True
 REPORT_BUILDER_ASYNC_REPORT = True
 #REPORT_BUILDER_EXCLUDE =['hujan.user','hujan.contenttype']
