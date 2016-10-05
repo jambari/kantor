@@ -157,7 +157,7 @@ class K_index(models.Model):
 		('18-21','18-21'),('21-24','21-24')
 		)
 	tanggal = models.DateField(auto_now=False, auto_now_add=False)
-	jam = models.CharField(max_length=3, choices=jam_index_choices)
+	jam = models.CharField(max_length=5, choices=jam_index_choices)
 	value = models.SmallIntegerField(default=0.0)
 
 
